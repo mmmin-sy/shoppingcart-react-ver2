@@ -2,9 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './app/store';
+import reducer from './reducers/';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import * as serviceWorker from './serviceWorker';
+
+const middleware = [ thunk ];
+
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+)
 
 ReactDOM.render(
   <React.StrictMode>
